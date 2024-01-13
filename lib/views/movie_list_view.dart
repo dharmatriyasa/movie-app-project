@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/controller/movie_controller.dart';
 import 'package:movie_app/widgets/movie_container.dart';
 
 class MovieListView extends StatelessWidget {
@@ -6,6 +7,8 @@ class MovieListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final movieController = MovieController();
+    final movies = movieController.movies;
     return Scaffold(
       backgroundColor: const Color(0XFF17141F),
       appBar: AppBar(
@@ -26,21 +29,12 @@ class MovieListView extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(
-        children: const [
-          MovieContainer(),
-          SizedBox(height: 4.0,),
-          MovieContainer(),
-          SizedBox(height: 4.0,),
-          MovieContainer(),
-          SizedBox(height: 4.0,),
-          MovieContainer(),
-          SizedBox(height: 4.0,),
-          MovieContainer(),
-          SizedBox(height: 4.0,),
-          MovieContainer(),
-        ],
-      ),
+      body: ListView.builder(
+        itemCount: movies.length,
+        itemBuilder: (context, index) {
+          return MovieContainer(movie: movies[index],);
+        },
+      )
     );
   }
 }

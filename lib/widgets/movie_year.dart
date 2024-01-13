@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MovieYear extends StatelessWidget {
-  const MovieYear({super.key});
+  final String year;
+
+  const MovieYear({
+    super.key,
+    required this.year,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +19,9 @@ class MovieYear extends StatelessWidget {
           color: Colors.grey.withOpacity(1),
           borderRadius: const BorderRadius.all(Radius.circular(20.0)),
         ),
-        child: const Text(
-          "2023",
-          style: TextStyle(
+        child: Text(
+          year,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 12.0,
             fontWeight: FontWeight.normal,

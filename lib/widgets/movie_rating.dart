@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MovieRating extends StatelessWidget {
-  const MovieRating({super.key});
+  final double rating;
+
+  const MovieRating({
+    super.key,
+    required this.rating,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +19,17 @@ class MovieRating extends StatelessWidget {
         color: Colors.grey.withOpacity(1),
         borderRadius: const BorderRadius.all(Radius.circular(20.0)),
       ),
-      child: const Row(
+      child: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.star,
             color: Color(0xFFFFD700),
             size: 16.0,
           ),
-          SizedBox(width: 4.0,),
+          const SizedBox(width: 4.0,),
           Text(
-            "8.2",
-            style: TextStyle(
+            rating.toString(),
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 12.0,
               fontWeight: FontWeight.normal,

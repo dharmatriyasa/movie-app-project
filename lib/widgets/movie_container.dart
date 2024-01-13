@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/model/movie.dart';
 import 'package:movie_app/views/movie_view.dart';
 import 'package:movie_app/widgets/movie_rating.dart';
 import 'package:movie_app/widgets/movie_year.dart';
 
 class MovieContainer extends StatelessWidget {
-  const MovieContainer({super.key});
+  final Movie movie;
+  const MovieContainer({
+    super.key,
+    required this.movie,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class MovieContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              "assets/1917.jpg",
+              movie.imagePath,
               width: 100,
             ),
             const SizedBox(width: 16.0,),
@@ -35,35 +40,39 @@ class MovieContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text(
-                  "1917",
-                  style: TextStyle(
+                Text(
+                  movie.title,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24.0,
                     color: Colors.white,
                   ),
                 ),
-                const Text(
-                  "Action, Drama, & War",
-                  style: TextStyle(
+                Text(
+                  movie.category,
+                  style: const TextStyle(
                     fontSize: 12.0,
                     color: Colors.white60,
                   ),
                 ),
                 const SizedBox(height: 4.0,),
-                const Row(
+                Row(
                   children: [
-                    MovieYear(),
-                    SizedBox(width: 4.0,),
-                    MovieRating(),
+                    MovieYear(
+                      year: movie.year,
+                    ),
+                    const SizedBox(width: 4.0,),
+                    MovieRating(
+                      rating: movie.rating,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 4.0,),
                 SizedBox(
                   width: MediaQuery.of(context).size.width - 140,
-                  child: const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                    style: TextStyle(
+                  child: Text(
+                    movie.description,
+                    style: const TextStyle(
                       color: Colors.white70,
                       fontSize: 10.0,
 
