@@ -10,6 +10,7 @@ class MovieView extends StatelessWidget {
         backgroundColor: const Color(0XFF17141F),
         leading: GestureDetector(
           onTap: () {
+            // add it at 4-route-screen
             Navigator.pop(context);
           },
           child: const Icon(
