@@ -34,7 +34,10 @@ class MovieListView extends StatelessWidget {
             body: ListView.builder(
               itemCount: movies.length,
               itemBuilder: (context, index) {
-                return MovieContainer(movie: movies[index],);
+                return MovieContainer(
+                  movie: movies[index],
+                  controller: movieController,
+                );
               },
             )
         );

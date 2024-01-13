@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/controller/movie_controller.dart';
 import 'package:movie_app/model/movie.dart';
 import 'package:movie_app/views/movie_view.dart';
 import 'package:movie_app/widgets/movie_rating.dart';
 import 'package:movie_app/widgets/movie_year.dart';
+import 'package:provider/provider.dart';
 
 class MovieContainer extends StatelessWidget {
   final Movie movie;
+  final MovieController controller;
   const MovieContainer({
     super.key,
     required this.movie,
+    required this.controller,
   });
 
   @override
@@ -23,7 +27,10 @@ class MovieContainer extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => MovieView(movie: movie,),
+              builder: (context) => ListenableProvider<MovieController>.value(
+                value: controller,
+                child: MovieView(movie: movie,),
+              )
             ),
           );
         },
