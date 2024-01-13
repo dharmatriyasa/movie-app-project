@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:movie_app/model/movie.dart';
 
-class MovieController {
+// ChangeNotifier -> notify consumer/subscribers if the data changed
+class MovieController extends ChangeNotifier {
   List<Movie> movies = [
     Movie(
       id: 1,
@@ -66,4 +68,9 @@ class MovieController {
       description: "May/June 1940. Four hundred thousand British and French soldiers are holed up in the French port town of Dunkirk. The only way out is via sea, and the Germans have air superiority, bombing the British soldiers and ships without much opposition. The situation looks dire and, in desperation, Britain sends civilian boats in addition to its hard-pressed Navy to try to evacuate the beleaguered forces. This is that story, seen through the eyes of a soldier amongst those trapped forces, two Royal Air Force fighter pilots, and a group of civilians on their boat, part of the evacuation fleet.",
     ),
   ];
+
+  void removeMovie(int id) {
+    movies.removeWhere((movie) => movie.id == id);
+    notifyListeners();
+  }
 }
