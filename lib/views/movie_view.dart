@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/model/movie.dart';
 
 class MovieView extends StatelessWidget {
-  const MovieView({super.key});
+  final Movie movie;
+
+  const MovieView({
+    super.key,
+    required this.movie,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +40,9 @@ class MovieView extends StatelessWidget {
               children: [
                 Container(
                   height: MediaQuery.of(context).size.height / 2,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/1917.jpg"),
+                      image: AssetImage(movie.imagePath),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -45,7 +51,7 @@ class MovieView extends StatelessWidget {
                   children: [
                     const SizedBox(height: 8.0,),
                     Text(
-                      "1917",
+                      movie.title,
                       style: const TextStyle(
                         fontSize: 28.0,
                         color: Colors.white,
@@ -54,7 +60,7 @@ class MovieView extends StatelessWidget {
                     ),
                     const SizedBox(height: 2.0,),
                     Text(
-                      "Action, Drama, & War",
+                      movie.category,
                       style: const TextStyle(
                         fontSize: 14.0,
                         color: Colors.white,
@@ -66,7 +72,7 @@ class MovieView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "2020",
+                          movie.year,
                           style: const TextStyle(
                             fontSize: 14.0,
                             color: Colors.white,
@@ -83,17 +89,17 @@ class MovieView extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 4.0,),
-                        const Row(
+                        Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star,
                               color: Color(0xFFFFD700),
                               size: 16.0,
                             ),
                             SizedBox(width: 4.0,),
                             Text(
-                              "8.2",
-                              style: TextStyle(
+                              movie.rating.toString(),
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 12.0,
                                 fontWeight: FontWeight.normal,
@@ -112,7 +118,7 @@ class MovieView extends StatelessWidget {
                         bottom: 72.0,
                       ),
                       child: Text(
-                        "April 6, 1917. On a battlefield in Northern France, Lance Corporal Tom Blake with the British Army is asked to choose one of his battalion colleagues to join him on an assignment, he choosing his best friend, Lance Corporal Will Schofield. It isn't until Blake chooses Schofield that they learn of the dangerous nature of the mission: to hand deliver a message to Colonel MacKenzie leading another nearby battalion, they having to cross no man's land to what they have been told are now the abandoned German trenches to get to MacKenzie just past the nearby town of Écoust. The message, which must reach its destination by dawn tomorrow, is for MacKenzie to abort his troop's attack then on the supposedly retreating Germans who are in reality lying in wait, the Germans having planned this deception for months. The lives of MacKenzie and his 1,600 men are at risk if the message does not make it through in time, one of those men being Blake's brother, Lt. Joseph Blake. Blake and Schofield's stories as it pertains to them as soldiers in the bigger picture of the war, as soldiers trying to stay alive, as friends, and as human beings who have their own motivations are told for as long as they are able to survive on this mission.",
+                        movie.description,
                         style: const TextStyle(
                           fontSize: 14.0,
                           color: Colors.white70,

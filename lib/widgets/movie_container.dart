@@ -23,7 +23,7 @@ class MovieContainer extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const MovieView()
+                builder: (context) => MovieView(movie: movie,),
             ),
           );
         },
